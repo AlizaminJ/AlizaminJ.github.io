@@ -1,0 +1,23 @@
+name: Update README
+on:
+  schedule:
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+
+jobs:
+  update-activity:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: jamesgeorge007/github-activity-readme@master
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  update-blog:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      # TODO: replace with your real dev.to username once your blog exists; harmless no-op until then
+      - uses: gautamkrishnar/blog-post-workflow@master
+        with:
+          feed_list: 'https://dev.to/feed/alizaminj'
