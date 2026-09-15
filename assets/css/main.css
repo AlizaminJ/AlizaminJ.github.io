@@ -57,6 +57,7 @@ body {
 }
 
 #header {
+  width: min(100%, 1000px);
   max-width: 1000px;
   animation: rise-in 900ms ease 150ms both;
 }
@@ -72,6 +73,22 @@ body {
   margin-top: 0.85rem;
   font-size: clamp(0.95rem, 2.4vw, 1.25rem);
   opacity: 0.86;
+}
+
+#typing-text {
+  display: inline-block;
+  min-height: 1.5em;
+}
+
+#typing-text::after {
+  content: "";
+  display: inline-block;
+  width: 0.08em;
+  height: 1em;
+  margin-left: 0.18em;
+  vertical-align: -0.12em;
+  background: currentColor;
+  animation: caret-blink 900ms steps(1) infinite;
 }
 
 #header nav {
@@ -179,6 +196,21 @@ body {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes caret-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #wrapper,
+  #bg,
+  #header,
+  #typing-text::after {
+    animation: none;
   }
 }
 
